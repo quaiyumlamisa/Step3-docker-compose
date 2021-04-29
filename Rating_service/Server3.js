@@ -2,7 +2,7 @@ const express=require('express');
 const http=require('http');
 
 const app=express();
-const port=3004;
+const port=8004;
 const server=http.createServer(app);
 
 var MongoClient = require('mongodb').MongoClient;
@@ -18,7 +18,8 @@ app.use(express.json());
 app.post('/rating',(req,res)=>
 {
 
-  MongoClient.connect('mongodb://localhost:27017/DB',{useUnifiedTopology: true}, function (err, client) {
+  console.log(req.body.DriverName +" "+req.body.Rating);
+  MongoClient.connect('mongodb://mongodb:27017/DB',{useUnifiedTopology: true}, function (err, client) {
   if (err) throw err
 
   var db = client.db('DB');

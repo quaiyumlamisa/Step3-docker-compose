@@ -3,7 +3,7 @@ const express=require('express');
 const http=require('http');
 
 const app=express();
-const port=3002;
+const port=8002;
 const server=http.createServer(app);
 
 
@@ -27,7 +27,7 @@ app.post('/rider',(req,res)=>
 {
   
   var s=JSON.parse(JSON.stringify(req.body));
-  //console.log(s.RName+" is looking for a driver.......");
+  console.log(s.RName+" is looking for a driver.......");
   rider.push(s);
  // console.log(rider); 
 });
@@ -36,7 +36,7 @@ app.post('/rider',(req,res)=>
 app.post('/driver',(req,res)=>
 {
   var s1=JSON.parse(JSON.stringify(req.body));
- // console.log(s1.DName+ " is looking for a rider.......");
+  console.log(s1.DName+ " is looking for a rider.......");
   driver.push(s1);
  // console.log(driver);
 });
@@ -84,7 +84,7 @@ setInterval(()=>
 
 
                 result.push(output);
-                console.log(output);
+                //console.log(output);
 
                 rider.splice(i,1);
                 driver.splice(marker,1);
@@ -100,13 +100,13 @@ setInterval(()=>
      {
             axios({
                 method: 'post',
-                url: 'http://localhost:3003/communication',
+                url: 'http://communicationservice:8003/communication',
                 data: result
                   })
         
             .then(res => 
               {
-              // console.log(res)
+              // console.log(res)8c44deef49b0
               })
         
         

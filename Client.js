@@ -1,6 +1,6 @@
 const axios=require('axios');
 const io=require('socket.io-client');
-let socket=io.connect('http://localhost:3003');
+let socket=io.connect('http://localhost:8003');
 
 
 var ridercount=0;
@@ -34,7 +34,7 @@ setInterval(()=>
   
     axios({
         method: 'post',
-        url: 'http://localhost:3000/rider',
+        url: 'http://localhost:8000/rider',
         data: {
                 RName: rname, 
                 xrc: random(1.1,99.8),
@@ -73,7 +73,7 @@ setInterval(()=>
    
      axios({
          method: 'post',
-         url: 'http://localhost:3000/driver',
+         url: 'http://localhost:8000/driver',
          data: {
                  DName: dname, 
                  car: car,
@@ -120,7 +120,7 @@ setInterval(()=>
 
    axios({
      method: 'post',
-     url: 'http://localhost:3004/rating',
+     url: 'http://localhost:8000/rating',
      data: {
              DriverName:data[count].Driver,
              Rating: getInteger(0,5)

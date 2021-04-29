@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+
+  ridesharingservice:
+    build: ./Ride_sharing_service/
+    restart: always
+
+    depends_on: 
+        - communicationservice
+    
+
+    
+  communicationservice:
+    build: ./Communication_service/
+    restart: always
+    ports: 
+        - 8003:8003
+
+
+  ratingservice:
+    build: ./Rating_service/
+    restart: always
+
+    depends_on:
+        - mongodb
+
+   
+
+
+  nginx:
+    build: ./nginx/
+    ports:
+       - 8000:8000
+    depends_on:
+       - ridesharingservice
+       - ratingservice
+
+  mongodb:
+    image: mongo
+    ports:
+        - 27017:27017
+    restart: always
+    
+
+
+
+
+
